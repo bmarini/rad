@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{Generate beautiful documentation for your restful api}
 
   s.rubyforge_project = "rad"
+  s.add_development_dependency "minitest"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
