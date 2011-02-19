@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-class TestRAD < MiniTest::Spec
+class TestRad < MiniTest::Spec
   describe "Rad::Dsl" do
     before do
       @rad = Rad::Dsl.evaluate( File.read( File.expand_path("../fixtures/Radfile", __FILE__) ) )

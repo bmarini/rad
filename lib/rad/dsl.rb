@@ -1,5 +1,24 @@
 module Rad
   class Dsl
+
+    def self.evaluate(spec)
+      builder = new
+      builder.instance_eval(spec)
+      builder.to_definition
+    end
+
+    def initialize
+      @resources = []
+    end
+
+    def resource(name, &block)
+      @resources << Resource.evaluate(name, &block)
+    end
+
+    def to_definition
+      Definition.new(@resources)
+    end
+
     class Base
       def self.evaluate(*args, &block)
         builder = new(*args)
@@ -54,14 +73,7 @@ module Rad
 
       def add_endpoint(method, name, &block)
         endpoint = Endpoint.evaluate(method, name, &block)
-
-        @params.each do |param|
-          # Add global params at the end unless they are defined already
-          unless endpoint.params.detect { |p| p.name == param.name }
-            endpoint.params << param
-          end
-        end
-
+        endpoint.add_params(@params)
         @endpoints << endpoint
       end
 
@@ -99,24 +111,5 @@ module Rad
         Rad::Param.new(@name, @desc, @type, @required, @allowable_values)
       end
     end
-
-    def self.evaluate(spec)
-      builder = new
-      builder.instance_eval(spec)
-      builder.to_definition
-    end
-
-    def initialize
-      @resources = []
-    end
-
-    def resource(name, &block)
-      @resources << Resource.evaluate(name, &block)
-    end
-
-    def to_definition
-      Definition.new(@resources)
-    end
-
   end
 end

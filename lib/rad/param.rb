@@ -4,5 +4,9 @@ module Rad
     def required?
       @required
     end
+
+    def <=>(other)
+      self.name == other.name
+    end
   end
 end
