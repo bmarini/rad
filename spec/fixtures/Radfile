@@ -1,24 +1,21 @@
 resource :accounts do
-  get "/accounts/authenticate/{username}" do
+  required_param :format do
+    desc "API response format"
+    allowable_values %w[json xml]
+    type :path
+  end
+
+  get "/accounts/authenticate/{username}.{format}" do
     desc "Authenticates a User"
 
-    param :username do
-      desc "A confirmed Wordnik username"
-      required
+    required_param :username do
+      desc "The user's username"
       type :path
     end
 
-    param :password do
+    required_param :password do
       desc "The user's password"
-      required
       type :query
-    end
-
-    param :format do
-      desc "API response format"
-      required
-      allowable_values %w[json xml]
-      type :path
     end
   end
 end

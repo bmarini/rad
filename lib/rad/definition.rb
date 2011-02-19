@@ -1,9 +1,4 @@
 module Rad
-  class Definition
-    attr_accessor :resources
-
-    def initialize(resources)
-      @resources = resources
-    end
+  class Definition < Struct.new(:resources)
   end
 end

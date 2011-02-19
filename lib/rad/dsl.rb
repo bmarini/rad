@@ -7,17 +7,41 @@ module Rad
         builder.to_definition
       end
 
+      class << self
+        def property(*names)
+          names.each do |name|
+            define_method name do |value|
+              instance_variable_set("@#{name}", value)
+            end
+          end
+        end
+      end
+
       def to_definition
         self
       end
     end
 
+    module Params
+      def param(name, &block)
+        @params << Param.evaluate(name, &block)
+      end
+
+      def required_param(name, &block)
+        param = Param.evaluate(name, &block)
+        param.required = true
+        @params << param
+      end
+    end
+
     class Resource < Base
       attr_reader :name, :endpoints
+      include Params
 
       def initialize(name)
         @name      = name
         @endpoints = []
+        @params    = []
       end
 
       %w[get post put delete].each do |m|
@@ -29,50 +53,50 @@ module Rad
       end
 
       def add_endpoint(method, name, &block)
-        @endpoints << Endpoint.evaluate(method, name, &block)
+        endpoint = Endpoint.evaluate(method, name, &block)
+
+        @params.each do |param|
+          # Add global params at the end unless they are defined already
+          unless endpoint.params.detect { |p| p.name == param.name }
+            endpoint.params << param
+          end
+        end
+
+        @endpoints << endpoint
+      end
+
+      def to_definition
+        Rad::Resource.new(@name, @endpoints)
       end
     end
 
     class Endpoint < Base
-      attr_reader :http_method, :path, :description, :params
+      include Params
+      property :desc
 
       def initialize(http_method, path)
         @http_method = http_method
         @path        = path
-        @description = ""
+        @desc        = ""
         @params      = []
       end
 
-      def desc(description)
-        @description = description
-      end
-
-      def param(name, &block)
-        @params << Param.new(name).instance_eval(&block)
+      def to_definition
+        Rad::Endpoint.new(@http_method, @path, @desc, @params)
       end
     end
 
     class Param < Base
+      property :desc, :type, :allowable_values
+
       def initialize(name)
         @name        = name
-        @description = ""
+        @desc        = ""
         @required    = false
       end
 
-      def desc(description)
-        @description = description
-      end
-
-      def required
-        @required = true
-      end
-
-      def type(type)
-        @type = type
-      end
-
-      def allowable_values(values)
-        @allowable_values = values
+      def to_definition
+        Rad::Param.new(@name, @desc, @type, @required, @allowable_values)
       end
     end
 
