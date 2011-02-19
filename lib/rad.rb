@@ -1,3 +1,4 @@
 module Rad
-  # Your code goes here...
+  autoload :Dsl, "rad/dsl"
+  autoload :Definition, "rad/definition"
 end

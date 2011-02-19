@@ -1,0 +1,24 @@
+resource :accounts do
+  get "/accounts/authenticate/{username}" do
+    desc "Authenticates a User"
+
+    param :username do
+      desc "A confirmed Wordnik username"
+      required
+      type :path
+    end
+
+    param :password do
+      desc "The user's password"
+      required
+      type :query
+    end
+
+    param :format do
+      desc "API response format"
+      required
+      allowable_values %w[json xml]
+      type :path
+    end
+  end
+end
