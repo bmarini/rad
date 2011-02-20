@@ -11,6 +11,10 @@
   %body
     %ul#documentation
     %script{ :type => "text/x-mustache-template", :id => "mustache-resource"}
-      %h3
-        {{name}}
-      
+      .heading
+        %h2="{{name}}"
+        %ul.endpoints
+
+    %script{ :type => "text/x-mustache-template", :id => "mustache-endpoint"}
+      .heading{:class => "{{http_method}}"}
+        %h3="{{http_method}}"
