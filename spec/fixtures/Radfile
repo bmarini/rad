@@ -18,4 +18,11 @@ resource :accounts do
       type :query
     end
   end
+
+  get "/accounts.{format}" do
+    desc "Returns all accounts"
+  end
+end
+
+resource :comments do
 end

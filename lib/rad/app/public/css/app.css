@@ -1,0 +1,51 @@
+#documentation {
+  padding-left: 0;
+  width: 800px;
+  margin: 0 auto;
+  font-family: Helvetica;
+}
+#documentation li {
+  list-style: none;
+}
+#documentation .resource {
+  border-bottom: 1px solid #eee;
+}
+#documentation .endpoints {
+  padding-left: 0;
+}
+#documentation .get {
+  background-color: #E7F0F7;
+  border: 1px solid #C3D9EC;
+}
+#documentation .endpoint {
+  margin: 5px 0;
+}
+#documentation .endpoint .heading {
+  padding: 1px;
+  font-size: 14px;
+}
+#documentation .heading div {
+  padding: 5px;
+}
+#documentation .endpoint .method {
+  text-transform: uppercase;
+  float: left;
+  background-color: #0F6AB4;
+  color: #fff;
+  margin-right: 10px;
+}
+#documentation .endpoint .path {
+  color: #000;
+}
+#documentation .endpoint .desc {
+  color: #0F6AB4;
+  float: right;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

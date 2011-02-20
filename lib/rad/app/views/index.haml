@@ -16,5 +16,7 @@
         %ul.endpoints
 
     %script{ :type => "text/x-mustache-template", :id => "mustache-endpoint"}
-      .heading{:class => "{{http_method}}"}
-        %h3="{{http_method}}"
+      .heading.clearfix{:class => "{{http_method}}"}
+        .desc="{{description}}"
+        .method="{{http_method}}"
+        .path="{{path}}"
