@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'bundler'
+require 'bundler/setup'
 require 'minitest/autorun'
 require 'minitest/spec'
 require 'rad'

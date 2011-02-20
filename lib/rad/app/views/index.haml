@@ -1,0 +1,16 @@
+!!! Strict
+%html
+  %head
+    %title API Documentation
+    %script{ :type => "text/javascript", :src => "js/jquery.min.js" }
+    %script{ :type => "text/javascript", :src => "js/underscore.min.js" }
+    %script{ :type => "text/javascript", :src => "js/backbone.min.js" }
+    %script{ :type => "text/javascript", :src => "js/mustache.js" }
+    %script{ :type => "text/javascript", :src => "js/app.js" }
+    %link{ :rel => "stylesheet", :type => "text/css", :href => "css/app.css" }
+  %body
+    %ul#documentation
+    %script{ :type => "text/x-mustache-template", :id => "mustache-resource"}
+      %h3
+        {{name}}
+      
