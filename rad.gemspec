@@ -13,10 +13,10 @@ Gem::Specification.new do |s|
   s.description = %q{Generate beautiful documentation for your restful api}
 
   s.rubyforge_project = "rad"
-  s.add_dependency "sinatra"
-  s.add_dependency "haml"
-  s.add_dependency "json"
-  s.add_development_dependency "minitest"
+  s.add_dependency "sinatra", "~> 1.1.3"
+  s.add_dependency "haml", "~> 3.0.25"
+  s.add_dependency "json", "~> 1.5.1"
+  s.add_development_dependency "minitest", "~> 2.0.2"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

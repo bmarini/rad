@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'haml'
+require 'sass'
 require 'json'
 
 module Rad
@@ -12,6 +13,10 @@ module Rad
 
     get '/' do
       haml :index
+    end
+
+    get '/css/app.css' do
+      scss :stylesheet
     end
 
     get '/resources' do
