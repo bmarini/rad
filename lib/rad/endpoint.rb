@@ -8,6 +8,13 @@ module Rad
       params.each { |param| add_param(param) }
     end
 
+    def path_params
+      params.select { |param| param.param_type == :path }
+    end
+    def query_params
+      params.select { |param| param.param_type == :query }
+    end
+
     def to_hash
       {
         :http_method => http_method,

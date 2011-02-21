@@ -20,9 +20,19 @@ module Rad
     end
 
     get '/resources' do
-      api = Rad::Dsl.evaluate File.read(settings.radfile)
       content_type :json
       api.to_json
+    end
+
+    post '/proxy' do
+      result = Rad::Proxy.request(api, params)
+      content_type :json
+      result.to_json
+    end
+
+    protected
+    def api
+      @api ||= Rad::Dsl.evaluate File.read(settings.radfile)
     end
   end
 end

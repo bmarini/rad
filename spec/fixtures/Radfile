@@ -1,3 +1,5 @@
+domain "http://api.wordnik.com/v4"
+
 resource :accounts do
   required_param :format do
     desc "API response format"

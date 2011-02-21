@@ -23,6 +23,8 @@
         .path="{{path}}"
       .params{ :style => "display:none"}
         %form
+          %input{ :type => "hidden", :name => "_path", :value => "{{path}}"}
+          %input{ :type => "hidden", :name => "_http_method", :value => "{{http_method}}"}
           %h4 Parameters
           %table
             %colgroup{:width => "20%"}

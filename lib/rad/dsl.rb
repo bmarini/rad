@@ -8,7 +8,12 @@ module Rad
     end
 
     def initialize
+      @domain    = "http://localhost"
       @resources = []
+    end
+
+    def domain(value)
+      @domain = value
     end
 
     def resource(name, &block)
@@ -16,7 +21,7 @@ module Rad
     end
 
     def to_definition
-      Definition.new(@resources)
+      Definition.new(@domain, @resources)
     end
 
     class Base

@@ -4,5 +4,6 @@ module Rad
   autoload :Definition, "rad/definition"
   autoload :Endpoint, "rad/endpoint"
   autoload :Param, "rad/param"
+  autoload :Proxy, "rad/proxy"
   autoload :Resource, "rad/resource"
 end
