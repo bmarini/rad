@@ -25,9 +25,12 @@ module Rad
     end
 
     post '/proxy' do
-      result = Rad::Proxy.request(api, params)
       content_type :json
-      result.to_json
+      result = Rad::Proxy.request(api, params)
+
+      { :status_code => result.code,
+        :headers     => result.response.to_hash.map { |k,v| {:key => k, :val => v.first } },
+        :body        => result.body }.to_json
     end
 
     protected

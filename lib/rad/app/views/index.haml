@@ -11,31 +11,32 @@
   %body
     %ul#documentation
 
-    %script{ :type => "text/x-mustache-template", :id => "mustache-resource"}
+    %script{ :type => "text/x-mustache-template", :id => "mustache-resource" }
       .heading
         %h2="{{name}}"
       %ul.endpoints
 
-    %script{ :type => "text/x-mustache-template", :id => "mustache-endpoint"}
-      .heading.clearfix{:class => "{{http_method}}"}
+    %script{ :type => "text/x-mustache-template", :id => "mustache-endpoint" }
+      .heading.clearfix{ :class => "{{http_method}}" }
         .desc="{{description}}"
         .method="{{http_method}}"
         .path="{{path}}"
-      .params{ :style => "display:none"}
+      .params{ :style => "display:none" }
         %form
-          %input{ :type => "hidden", :name => "_path", :value => "{{path}}"}
-          %input{ :type => "hidden", :name => "_http_method", :value => "{{http_method}}"}
+          %input{ :type => "hidden", :name => "_path", :value => "{{path}}" }
+          %input{ :type => "hidden", :name => "_http_method", :value => "{{http_method}}" }
           %h4 Parameters
           %table
-            %colgroup{:width => "20%"}
-            %colgroup{:width => "30%"}
-            %colgroup{:width => "50%"}
+            %colgroup{ :width => "20%" }
+            %colgroup{ :width => "30%" }
+            %colgroup{ :width => "50%" }
             %tr
               %th Parameter
               %th Value
               %th Description
           %p
             %input{ :type => "submit", :value => "Try it out" }
+      .response
 
     %script{ :type => "text/x-mustache-template", :id => "mustache-param"}
       %td="{{name}}"
@@ -51,3 +52,17 @@
         %option{ :name => "{{.}}", :value => "{{.}}" }
           = "{{.}}"
         = "{{/allowable_values}}"
+
+    %script{ :type => "text/x-mustache-template", :id => "mustache-response"}
+      .response-status="{{status_code}}"
+      .response-headers
+        %h4 Headers
+        %ul
+          = "{{#headers}}"
+          %li.clearfix
+            .key="{{key}}"
+            .val="{{val}}"
+          = "{{/headers}}"
+      .response-body
+        %h4 Response Body
+        %div="{{body}}"

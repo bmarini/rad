@@ -77,6 +77,39 @@
         }
       }
     }
+
+    .response {
+      padding: 5px;
+
+      ul {
+        padding-left: 0;
+      }
+      li {
+        font-size: 12px;
+        font-family: Courier;
+        padding: 4px 0;
+        border-bottom: 1px solid #efefef;
+      }
+      .response-status {
+        float: right;
+        font-weight: bold;
+        font-size: 24px;
+        color: #999;
+      }
+      .key {
+        float: left;
+        width: 45%;
+        margin-right: %10;
+      }
+      .val {
+        float: left;
+        width: 45%;
+      }
+      .response-body div {
+        font-size: 12px;
+        font-family: Courier;
+      }
+    }
   }
 }
 
