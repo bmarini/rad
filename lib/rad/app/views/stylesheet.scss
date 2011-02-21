@@ -23,7 +23,6 @@
   .endpoint {
     margin: 5px 0;
 
-
     .heading {
       padding: 1px;
       font-size: 14px;
@@ -45,6 +44,38 @@
     .desc {
       color: #0F6AB4;
       float: right;
+    }
+
+    .params {
+      padding: 10px;
+      background-color: #E7F0F7;
+      
+      h4 {
+        margin: 0;
+        font-weight: normal;
+        color: #0F6AB4;
+      }
+      
+      table {
+        margin-top: 10px;
+        width: 100%;
+        font-size: 14px;
+        border-collapse: collapse;
+
+        th {
+          font-weight: normal;
+          color: #999;
+          border-bottom: 1px solid #ccc;
+        }
+
+        td, th {
+          text-align: left;
+        }
+
+        td {
+          padding: 4px 2px;
+        }
+      }
     }
   }
 }

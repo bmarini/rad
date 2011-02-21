@@ -10,6 +10,7 @@
     %link{ :rel => "stylesheet", :type => "text/css", :href => "css/app.css" }
   %body
     %ul#documentation
+
     %script{ :type => "text/x-mustache-template", :id => "mustache-resource"}
       .heading
         %h2="{{name}}"
@@ -20,3 +21,31 @@
         .desc="{{description}}"
         .method="{{http_method}}"
         .path="{{path}}"
+      .params{ :style => "display:none"}
+        %form
+          %h4 Parameters
+          %table
+            %colgroup{:width => "20%"}
+            %colgroup{:width => "30%"}
+            %colgroup{:width => "50%"}
+            %tr
+              %th Parameter
+              %th Value
+              %th Description
+          %p
+            %input{ :type => "submit", :value => "Try it out" }
+
+    %script{ :type => "text/x-mustache-template", :id => "mustache-param"}
+      %td="{{name}}"
+      %td.field
+      %td="{{description}}"
+
+    %script{ :type => "text/x-mustache-template", :id => "mustache-param-text"}
+      %input{ :type => "text", :value => "", :name => "{{name}}", :size => "20" }
+
+    %script{ :type => "text/x-mustache-template", :id => "mustache-param-select"}
+      %select{ :name => "{{name}}" }
+        = "{{#allowable_values}}"
+        %option{ :name => "{{.}}", :value => "{{.}}" }
+          = "{{.}}"
+        = "{{/allowable_values}}"
