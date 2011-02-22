@@ -1,22 +1,75 @@
+@mixin rounded($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin http-method-base($dark, $medium, $light) {
+  background-color: $light;
+  border: 2px solid $medium;
+
+  .method {
+    background-color: $dark;
+  }
+  .desc {
+    color: $dark;
+  }
+  .heading {
+    border-bottom: 1px solid $medium;
+  }
+  .params {
+    background-color: $light;
+    h4 {
+      color: $dark;
+    }
+  }
+}
+
 #documentation {
   padding-left: 0;
   width: 800px;
   margin: 0 auto;
   font-family: Helvetica;
 
+  $get-border-color: #C3D9EC;
+  $get-bg-color: #E7F0F7;
+  $get-font-color: #0F6AB4;
+
+  $post-border-color: #C3E8D1;
+  $post-bg-color: #E7F6EC;
+  $post-font-color: #10A54A;
+
+  $put-border-color: #F0E0CA;
+  $put-bg-color: #F9F2E9;
+  $put-font-color: #C5862B;
+
+  $delete-border-color: #E8C6C7;
+  $delete-bg-color: #F5E8E8;
+  $delete-font-color: #A41E22;
+
   li {
     list-style: none;
   }
   .resource {
-    border-bottom: 1px solid #eee;
+    .heading h2 {
+      margin-bottom: 0;
+    }
   }
   .endpoints {
     padding-left: 0;
   }
   .get {
-    background-color: #E7F0F7;
-    border: 1px solid #C3D9EC;
+    @include http-method-base($get-font-color, $get-border-color, $get-bg-color);
   }
+  .post {
+    @include http-method-base($post-font-color, $post-border-color, $post-bg-color);
+  }
+  .put {
+    @include http-method-base($put-font-color, $put-border-color, $put-bg-color);
+  }
+  .delete {
+    @include http-method-base($delete-font-color, $delete-border-color, $delete-bg-color);
+  }
+
   .heading div {
     padding: 5px;
   }
@@ -33,7 +86,6 @@
     .method {
       text-transform: uppercase;
       float: left;
-      background-color: #0F6AB4;
       color: #fff;
       margin-right: 10px;
     }
@@ -42,20 +94,17 @@
       color: #000;
     }
     .desc {
-      color: #0F6AB4;
       float: right;
     }
 
     .params {
       padding: 10px;
-      background-color: #E7F0F7;
-      
+
       h4 {
         margin: 0;
         font-weight: normal;
-        color: #0F6AB4;
       }
-      
+
       table {
         margin-top: 10px;
         width: 100%;
@@ -65,7 +114,7 @@
         th {
           font-weight: normal;
           color: #999;
-          border-bottom: 1px solid #ccc;
+          border-bottom: 1px solid #999;
         }
 
         td, th {
@@ -80,6 +129,10 @@
 
     .response {
       padding: 5px;
+
+      h4 {
+        margin: 10px 0;
+      }
 
       ul {
         padding-left: 0;

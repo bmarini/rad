@@ -17,7 +17,7 @@
       %ul.endpoints
 
     %script{ :type => "text/x-mustache-template", :id => "mustache-endpoint" }
-      .heading.clearfix{ :class => "{{http_method}}" }
+      .heading.clearfix
         .desc="{{description}}"
         .method="{{http_method}}"
         .path="{{path}}"
@@ -36,7 +36,7 @@
               %th Description
           %p
             %input{ :type => "submit", :value => "Try it out" }
-      .response
+        .response
 
     %script{ :type => "text/x-mustache-template", :id => "mustache-param"}
       %td="{{name}}"
@@ -55,6 +55,9 @@
 
     %script{ :type => "text/x-mustache-template", :id => "mustache-response"}
       .response-status="{{status_code}}"
+      .response-body
+        %h4 Response Body
+        %div="{{body}}"
       .response-headers
         %h4 Headers
         %ul
@@ -63,6 +66,3 @@
             .key="{{key}}"
             .val="{{val}}"
           = "{{/headers}}"
-      .response-body
-        %h4 Response Body
-        %div="{{body}}"
