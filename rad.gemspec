@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Ben Marini"]
   s.email       = ["bmarini@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{RESTful API Documentor}
+  s.summary     = %q{RESTful API Documenter}
   s.description = %q{Generate beautiful documentation for your restful api}
 
   s.rubyforge_project = "rad"
@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency "httparty", "~> 0.7.4"
   s.add_dependency "haml", "~> 3.0.25"
   s.add_dependency "json", "~> 1.5.1"
+  s.add_development_dependency "shotgun"
   s.add_development_dependency "minitest", "~> 2.0.2"
 
   s.files         = `git ls-files`.split("\n")

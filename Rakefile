@@ -1,5 +1,4 @@
-require 'bundler'
-Bundler::GemHelper.install_tasks
+require 'bundler/gem_tasks'
 
 require 'rake/clean'
 require 'rake/testtask'
@@ -20,4 +19,9 @@ task :coverage do
   rm_f "coverage.data"
   system "rcov -x /Users -Ilib:spec spec/*_spec.rb"
   system "open coverage/index.html" if PLATFORM['darwin']
+end
+
+desc "Run the example app"
+task :example do
+  system "bundle exec rackup example/config.ru"
 end

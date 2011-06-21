@@ -1,0 +1,37 @@
+domain "http://api.wordnik.com/v4"
+resource :accounts do
+  required_param :format do
+    desc "API response format"
+    allowable_values %w[json xml]
+    type :path
+  end
+
+  get "/accounts/authenticate/{username}.{format}" do
+    desc "Authenticates a User"
+
+    required_param :username do
+      desc "The user's username"
+      type :path
+    end
+
+    required_param :password do
+      desc "The user's password"
+      type :query
+    end
+  end
+
+  get "/accounts.{format}" do
+    desc "Returns all accounts"
+  end
+end
+
+resource :word do
+  get "/word.{format}/{word}" do
+    desc "Given a word as a string, returns the WordObject that represents it"
+
+    required_param :word do
+      desc "String value of WordObject to return; Part of the URL string itself"
+      type :path
+    end
+  end
+end
